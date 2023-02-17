@@ -1,7 +1,7 @@
 # drb-gw-hw-model-data-release
 
 Code repo to build the data release for the groundwater/headwater modelling quest for the Delaware River Basin.  
-
+Associated project repo: [drb-gw-hw-model-prep](https://github.com/USGS-R/drb-gw-hw-model-prep)
 
 ### Instuctions below taken from [slim-data-release-template](https://github.com/USGS-R/slim-data-release-template)
 

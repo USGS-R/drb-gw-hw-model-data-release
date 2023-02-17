@@ -1,12 +1,20 @@
 title: >-
-  Data release: [your title here]
+  Incorporating groundwater discharge processes into process-guided deep-learning temperature models
 
 
 abstract: >-
-  [a description of this data release]
+  This data release and model archive provides all data, code, and modeling results used in Barclay et al. (2023)
+  to assess the ability of process-guided deep learning stream temperature models to accurately incorporate groundwater-discharge processes.
+  We assessed the performance of an existing process-guided deep learning stream temperature model of the Delaware River Basin (USA) and
+  explored four approaches for improving groundwater process representation: 1) a custom loss function that leverages the unique patterns
+  of air and water temperature coupling resulting from different temperature drivers, 2) inclusion of additional groundwater-relevant
+  catchment attributes, 3) incorporation of additional process model outputs, and 4) a composite model. The associated manuscript examines
+  changes in the predictive accuracy, feature importance, and predictive ability in un-seen reaches resulting from each of the four approaches.
+  This data release includes XXX zipped folders for 1) Data Preparation, 2) Modelling Code, and 3) Model Predictions. Instructions for running
+  data preparation code and modeling code can be found in the README.md files in 01_Data_Prep and 02_Model_Code respectively.
       
-authors: ["[NAME 1]", "[NAME 2]"]
-pubdate: 2020 # replace with actual year, e.g., 2020
+authors: ["Barclay, Janet R", "Topp, Simon N" "Koenig Snyder, Lauren E", "Sleckman, Margaux J", "Sadler, Jeffrey M", "Appling, Alison P"]
+pubdate: 2023 # replace with actual year, e.g., 2020
 doi: https://doi.org/YY.XXXXX/XXXXXX # replace with actual DOI
 
 build-environment: Multiple computer systems were used to generate these data, including linux, OSX. The open source languages R and Python were used on all systems.

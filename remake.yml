@@ -22,34 +22,39 @@ targets:
   # upload this file to your pipeline repostiory, read it in with the read_spatial_file function below, and extract_feature will pull the necessary metadata
   # you do NOT need to upload this file to ScienceBase  with the sf_to_zip function if it was not a planned part of your data release
   sf_spatial_data:
-    command: st_read('example_data/example_shapefile/example_shapefile.shp')
+    command: sf::st_read('example_data/example_shapefile/example_shapefile.shp')
     depends:
       - example_data/example_shapefile/example_shapefile.dbf
       - example_data/example_shapefile/example_shapefile.prj
       - example_data/example_shapefile/example_shapefile.shx
-  
+    
   # grab metadata from spatial file
   spatial_metadata:
     command: meddle::extract_feature(sf_spatial_data)
+
+  out_data/example_df.csv:
+    command: file.copy(from = "example_data/example_df.csv", to = target_name, overwrite = TRUE)
     
-  out_data/cars.csv:
-    command: file.copy(from = "example_data/example_cars.csv", 
-      to = target_name, overwrite = TRUE)
-  
   out_data/spatial.zip:
     command: sf_to_zip(zip_filename = target_name, 
       sf_object = sf_spatial_data, layer_name = I('spatial_data'))
-
+  
   out_xml/fgdc_metadata.xml:
     command: render(filename = target_name,
       "in_text/text_data_release.yml",
       spatial_metadata)
-    
+      
   log/sb_posted_files.csv:
     command: sb_replace_files_log(filename = target_name, 
-      sb_id = I('5faaac68d34eb413d5df1f22'),
+      sb_id = I('63efb2c5d34efa0476b03854'),
       "out_data/spatial.zip",
-      "out_data/cars.csv",
+      "out_data/example_df.csv",
       "out_xml/fgdc_metadata.xml",
       sources = "src/sb_utils.R")
-      
+        
+  
+    # ------ SB IDs --------
+  
+    # sbid:
+    #   command: c(I('63efb2c5d34efa0476b03854'))
+

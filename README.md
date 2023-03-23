@@ -1,5 +1,9 @@
-# slim-data-release-template
+# drb-gw-hw-model-data-release
 
+Code repo to build the data release for the groundwater/headwater modelling quest for the Delaware River Basin.  
+Associated project repo: [drb-gw-hw-model-prep](https://github.com/USGS-R/drb-gw-hw-model-prep)
+
+### Instuctions below taken from [slim-data-release-template](https://github.com/USGS-R/slim-data-release-template)
 
 ## code
 
@@ -19,7 +23,6 @@ Need to have CRAN package `sbtools` installed
 ## remake.yml details
 
 This slim template is designed to keep everything in a single remake yaml. So all data munging, manipulation, and file writing happens there, in addition to the sciencebase uploads.
-
 
 This is the single push to sciencebase, it does the xml (metadata) and data at the same time. Because the upload step uses an internal task table, you can specify all files that should be pushed to the same sbid at one time. Again, because the upload step uses an internal task table, data files aren't replaced everytime you fix a metadata typo or add information to a metadata field. The result of the sciencebase push step is a file with timestamps for when each file got pushed that can be checked into GitHub. Having the file with timestamps in GitHub will clearly show when updates were made and will render nicely without having to build the object target locally.
 ```yaml

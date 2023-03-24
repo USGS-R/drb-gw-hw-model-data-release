@@ -14,7 +14,6 @@ abstract: >-
   data preparation code and modeling code can be found in the README.md files in 01_Data_Prep and 02_Model_Code respectively.
   <br> 
   TEST
-  TEST
     
 authors: ["Barclay, Janet R", "Topp, Simon N", "Koenig Snyder, Lauren E", "Sleckman, Margaux J", "Sadler, Jeffrey M", "Appling, Alison P"]
 pubdate: 2023 # replace with actual year, e.g., 2020

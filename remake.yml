@@ -21,12 +21,12 @@ targets:
   # you will need to find a shapefile that represents the geographic area or your data release
   # upload this file to your pipeline repostiory, read it in with the read_spatial_file function below, and extract_feature will pull the necessary metadata
   # you do NOT need to upload this file to ScienceBase  with the sf_to_zip function if it was not a planned part of your data release
-  sf_spatial_data:
-    command: sf::st_read('example_data/example_shapefile/example_shapefile.shp')
-    depends:
-      - example_data/example_shapefile/example_shapefile.dbf
-      - example_data/example_shapefile/example_shapefile.prj
-      - example_data/example_shapefile/example_shapefile.shx
+  # sf_spatial_data:
+  #   command: sf::st_read('example_data/example_shapefile/example_shapefile.shp')
+  #   depends:
+  #     - example_data/example_shapefile/example_shapefile.dbf
+  #     - example_data/example_shapefile/example_shapefile.prj
+  #     - example_data/example_shapefile/example_shapefile.shx
     
   # grab metadata from spatial file
   spatial_metadata:
@@ -35,9 +35,9 @@ targets:
   out_data/example_df.csv:
     command: file.copy(from = "example_data/example_df.csv", to = target_name, overwrite = TRUE)
     
-  out_data/spatial.zip:
-    command: sf_to_zip(zip_filename = target_name, 
-      sf_object = sf_spatial_data, layer_name = I('spatial_data'))
+  # out_data/spatial.zip:
+  #   command: sf_to_zip(zip_filename = target_name, 
+  #     sf_object = sf_spatial_data, layer_name = I('spatial_data'))
   
   out_xml/fgdc_metadata.xml:
     command: render(filename = target_name,
@@ -45,9 +45,8 @@ targets:
       spatial_metadata)
       
   log/sb_posted_files.csv:
-    command: sb_replace_files_log(filename = target_name, 
-      sb_id = I('63efb2c5d34efa0476b03854'),
-      "out_data/spatial.zip",
+    command: sb_replace_files(filename = target_name, 
+      sb_id = sbid,
       "out_data/example_df.csv",
       "out_xml/fgdc_metadata.xml",
       sources = "src/sb_utils.R")
@@ -55,6 +54,6 @@ targets:
   
     # ------ SB IDs --------
   
-    # sbid:
-    #   command: c(I('63efb2c5d34efa0476b03854'))
+    sbid:
+      command: c(I('63efb2c5d34efa0476b03854'))
 

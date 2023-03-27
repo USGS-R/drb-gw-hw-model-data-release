@@ -46,7 +46,7 @@ entities:
     attributes:
     -
       attr-label: modflow_data_extraction.zip
-      attr-def: A zipped file containing python code scripts, environment files, and output data in `data_out' from MODFLOW [XX define]. Please see README.md for detail description of specific files.  
+      attr-def: A zipped file containing python code scripts, environment files, and output data in `data_out' from MODFLOW [XX define]. Please see README.md and data dictionary for detail description of specific files.  
       attr-defs: >-
         This model archive
       data-min: NA
@@ -80,7 +80,7 @@ entities:
       data-min: NA
       data-max: NA
       data-units: NA  
- -
+  -
     data-name: 03_Model_Predictions.zip
     data-description: A zip file containing model outputs and data_dictionary table.  XX
     attributes:

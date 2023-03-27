@@ -163,3 +163,9 @@ sb_secret_login <- function(){
     sbtools::authenticate_sb(username = sb_secret$username, password = sb_secret$password)
   }
 }
+
+
+read_sf <- function(x){
+  sf_obj <- sf::st_read(x)
+  return(sf_obj)
+}

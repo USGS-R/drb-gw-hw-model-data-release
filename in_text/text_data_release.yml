@@ -119,20 +119,20 @@ latitude-res: 0.00001
 longitude-res: 0.00001
 
 # ----contacts----
-contact-person: Jordan S. Read
+contact-person: Margaux J. Sleckman
 contact-phone: 608-821-3922
-contact-email: jread@usgs.gov
-contact-position: Research Civil Engineer
+contact-email: msleckman@usgs.gov
+contact-position: Data Scientist
 contact-address: "8505 Research Way"
 contact-city: Middleton
 contact-state: WI
 contact-zip: 53562
 
-metadata-person: Jordan S. Read
-metadata-position: Research Civil Engineer
+metadata-person: Margaux J. Sleckman
+metadata-position: Data Scientist
 metadata-phone: 608-821-3921
 metadata-fax: 608-821-3817
-metadata-email: jread@usgs.gov
+metadata-email: msleckman@usgs.gov
 metadata-address: "8505 Research Way"
 metadata-city: Middleton
 metadata-state: WI
@@ -147,7 +147,7 @@ funding-credits: >-
 process-description: >-
   [A description of processing]
 
-distro-person: Jordan S. Read
+distro-person: Janet R. Barkley
 liability-statement: >-
   Unless otherwise stated, all data, metadata and related materials are considered to satisfy the quality standards relative to the purpose for which the data were collected.
   Although these data and associated metadata have been reviewed for accuracy and completeness and approved for release by the U.S. Geological Survey (USGS),

@@ -27,9 +27,6 @@ targets:
   # grab metadata from spatial file
   spatial_metadata:
     command: extract_feature(sf_spatial_data)
-
-  out_data/drb_boundary.zip:
-    command: sf_to_zip(zip_filename = target_name, sf_object = sf_spatial_data, layer_name = I('drb_boundary'))
   
   out_xml/fgdc_metadata.xml:
     command: render(filename = target_name, "in_text/text_data_release.yml", spatial_metadata)
@@ -44,7 +41,7 @@ targets:
     command: zip_this(target_name, .object = 'in_data/03_Model_Predictions')
       
   log/sb_posted_files.csv:
-    command: sb_replace_files(filename = target_name, sb_id = sbid, "out_data/drb_boundary.zip", "out_data/01_Data_Prep.zip", "out_data/02_Model_Code.zip", "out_data/03_Model_Predictions.zip", "out_xml/fgdc_metadata.xml", sources = "src/sb_utils.R")
+    command: sb_replace_files(filename = target_name, sb_id = sbid, "out_data/01_Data_Prep.zip", "out_data/02_Model_Code.zip", "out_data/03_Model_Predictions.zip", "out_xml/fgdc_metadata.xml", sources = "src/sb_utils.R")
         
     # ------ SB IDs --------
   

@@ -145,7 +145,20 @@ funding-credits: >-
   This research used resources of the Core Science Analytics and Synthesis Advanced Research Computing program at the U.S. Geological Survey.
 
 process-description: >-
-  [Add description of processing steps]
+  Details of processing steps contained within this release are below, for additional information please
+  see the relevant README.md and file_dictionaries.csv within each zipped folder:
+  
+  (Processed in 01_Data Prep)
+  This is the initial data preparation step for the model. The model data preparation was split into the 3 following sections:
+    1) modflow_data_extraction 
+    2) river-dl_data_prep 
+    3) CatchmentAttributes. [Margaux to pull content from gw processing methods]
+  
+  (Processed in 02_Model_Code)
+  This step contains the code for the model. 
+
+  (Processed in 03_Model_Predictions)
+  
 
 distro-person: Janet R. Barkley
 liability-statement: >-

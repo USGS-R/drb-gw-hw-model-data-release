@@ -148,11 +148,15 @@ process-description: >-
   Details of processing steps contained within this release are below, for additional information please
   see the relevant README.md and file_dictionaries.csv within each zipped folder:
   
-  (Processed in 01_Data Prep)
+  (Processed in 01_Data_Prep)
   This is the initial data preparation step for the model. The model data preparation was split into the 3 following sections:
     1) modflow_data_extraction 
     2) river-dl_data_prep 
-    3) CatchmentAttributes. [Margaux to pull content from gw processing methods]
+    3) CatchmentAttributes. 
+        a. Identified relevant variables (e.g. local soil characteristics data, river channel confinement data, local bedrock data)
+        b. Gathered the relevant basin catchment characteristics from Wieczorek et al., 2021 from sciencebase.gov for the Delaware River Basin using an automated data fetch process with the pre-populated data source table stored in CatchmentAttributes/drb-gw-hw-model-prep/1_fetch/in/nhdv2_attributes_from_sciencebase.csv 
+        c. Gathered additional attributes such as channel confinement from McManamay and DeRolph (2018), depth to bedrock measurements from Shangguan et al., 2016. 
+        d. Aggregated all relevant basin characteristics for the model into a combined nhm_attributes feather file. This aggregated nhm_attributes dataset can be found in CatchmentAttributes/drb-gw-hw-model-prep/2b_nhm_process_nhm_groundwater/nhm_attributes_20230316.feather
   
   (Processed in 02_Model_Code)
   This step contains the code for the model. 

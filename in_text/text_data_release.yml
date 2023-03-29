@@ -10,12 +10,12 @@ abstract: >-
   of air and water temperature coupling resulting from different temperature drivers, 2) inclusion of additional groundwater-relevant
   catchment attributes, 3) incorporation of additional process model outputs, and 4) a composite model. The associated manuscript examines
   changes in the predictive accuracy, feature importance, and predictive ability in un-seen reaches resulting from each of the four approaches.
-  This data release includes XXX zipped folders for 1) Data Preparation, 2) Modelling Code, and 3) Model Predictions. Instructions for running
+  This data release includes XXX zipped folders for 1) Data Preparation, 2) Model Code, and 3) Model Predictions. Instructions for running
   data preparation code and modeling code can be found in the README.md files in 01_Data_Prep and 02_Model_Code respectively.
       
 authors: ["Barclay, Janet R", "Topp, Simon N", "Koenig Snyder, Lauren E", "Sleckman, Margaux J", "Sadler, Jeffrey M", "Appling, Alison P"]
-pubdate: 2023 # replace with actual year, e.g., 2020
-doi: https://doi.org/YY.XXXXX/XXXXXX # replace with actual DOI
+pubdate: 2023 
+doi: https://doi.org/10.5066/P9KO49OT
 
 build-environment: Multiple computer systems were used to generate these data, including linux, OSX. The open source languages R and Python were used on all systems.
 

@@ -9,48 +9,40 @@ packages:
 sources:
   - src/sb_utils.R
   - src/file_utils.R
+  - src/file_functions.R
 
 targets:
   all:
     depends:
       - log/sb_posted_files.csv
+      - out_data/drb_boundary.zip
+      - out_data/01_Data_Prep.zip
+      - out_data/02_Model_Code.zip
+      - out_data/03_Model_Predictions.zip
 
-  # create target of spatial file
-  # please note that the extract_feature function (below) from the meddle package must be run to create certain pieces of spatial metadata
-  # if you are not uploading any spatial data files to your data release,
-  # you will need to find a shapefile that represents the geographic area or your data release
-  # upload this file to your pipeline repostiory, read it in with the read_spatial_file function below, and extract_feature will pull the necessary metadata
-  # you do NOT need to upload this file to ScienceBase  with the sf_to_zip function if it was not a planned part of your data release
-  # sf_spatial_data:
-  #  command: sf::st_read('example_data/example_shapefile/example_shapefile.shp')
-  #  depends:
-  #    - example_data/example_shapefile/example_shapefile.dbf
-  #    - example_data/example_shapefile/example_shapefile.prj
-  #    - example_data/example_shapefile/example_shapefile.shx
-    
+  ## Adding DRB boundary 
+  sf_spatial_data:
+    command: read_sf('in_data/drb_boundary.shp')
+
   # grab metadata from spatial file
-  # spatial_metadata:
-  #  command: meddle::extract_feature(sf_spatial_data)
-
-  out_data/example_df.csv:
-    command: file.copy(from = "example_data/example_df.csv", to = target_name, overwrite = TRUE)
-    
-  # out_data/spatial.zip:
-  #  command: sf_to_zip(zip_filename = target_name, 
-  #    sf_object = sf_spatial_data, layer_name = I('spatial_data'))
+  spatial_metadata:
+    command: extract_feature(sf_spatial_data)
   
   out_xml/fgdc_metadata.xml:
-    command: render(filename = target_name,
-      "in_text/text_data_release.yml")
+    command: render(filename = target_name, "in_text/text_data_release.yml", spatial_metadata)
+      
+  out_data/01_Data_Prep.zip:
+    command: zip_this(target_name, .object = 'in_data/01_Data_Prep')
+    
+  out_data/02_Model_Code.zip:
+    command: zip_this(target_name, .object = 'in_data/02_Model_Code')
+  
+  out_data/03_Model_Predictions.zip:
+    command: zip_this(target_name, .object = 'in_data/03_Model_Predictions')
       
   log/sb_posted_files.csv:
-    command: sb_replace_files(filename = target_name, 
-      sb_id = sbid,
-      "out_data/example_df.csv",
-      "out_xml/fgdc_metadata.xml",
-      sources = "src/sb_utils.R")
+    command: sb_replace_files(filename = target_name, sb_id = sbid, "out_data/01_Data_Prep.zip", "out_data/02_Model_Code.zip", "out_data/03_Model_Predictions.zip", "out_xml/fgdc_metadata.xml", sources = "src/sb_utils.R")
         
-  
     # ------ SB IDs --------
   
   sbid:

@@ -141,27 +141,76 @@ metadata-date: !expr format(Sys.time(),'%Y%m%d')
 
 accur-test: No formal attribute accuracy tests were conducted.
 funding-credits: >-
-  This study was funded by the [add funding details here]
+  This study was funded by the USGS with support from the U.S. Department of Energy, Office of Science, Office of Biological and Environmental Research, under Interagency Agreement Number 89243021SSC000068 as part of the ExaSheds project.
   This research used resources of the Core Science Analytics and Synthesis Advanced Research Computing program at the U.S. Geological Survey.
 
 process-description: >-
-  Details of processing steps contained within this release are below, for additional information please
-  see the relevant README.md and file_dictionaries.csv within each zipped folder:
+  Details of processing steps contained within this release are below. For additional information, please see the relevant README.md and file_dictionary.csv within each zipped folder:
   
   (Processed in 01_Data_Prep)
-  This is the initial data preparation step for the model. The model data preparation was split into the 3 following sections:
-    1) modflow_data_extraction 
-    2) river-dl_data_prep 
-    3) CatchmentAttributes. 
-        a. Identified relevant variables (e.g. local soil characteristics data, river channel confinement data, local bedrock data)
-        b. Gathered the relevant basin catchment characteristics from Wieczorek et al., 2021 from sciencebase.gov for the Delaware River Basin using an automated data fetch process with the pre-populated data source table stored in CatchmentAttributes/drb-gw-hw-model-prep/1_fetch/in/nhdv2_attributes_from_sciencebase.csv 
-        c. Gathered additional attributes such as channel confinement from McManamay and DeRolph (2018), depth to bedrock measurements from Shangguan et al., 2016. 
-        d. Aggregated all relevant basin characteristics for the model into a combined nhm_attributes feather file. This aggregated nhm_attributes dataset can be found in CatchmentAttributes/drb-gw-hw-model-prep/2b_nhm_process_nhm_groundwater/nhm_attributes_20230316.feather
+  
+  1), 2), 3) contain the initial data preparation steps for the model runs.
+  
+    1) river-dl_data_prep
+  
+      a. Initial data for river-dl is downloaded from ScienceBase (Oliver et al, 2022; https://doi.org/10.5066/P9GUHX1U). This data includes daily meteorological drivers (1980-2022), river reach characteristics, process model outputs, stream temperature observations, and an adjacency matrix detailing spatial relationships for 456 river reaches within the Delaware River Basin.
+      
+      b. All drivers, reach information, and observations are munged to remove missing values and extreme outliers.
+
+    2) modflow_data_extraction 
+    
+      a. MODFLOW model input and output files are downloaded from Water Node (Zell and Ward, 2020; https://doi.org/10.5066/P91LFFN1) and the National Hydrologic Model (NHM) geospatial files are downloaded from Sciencebase (Bock et al, 2020; https://doi.org/10.5066/P971JAGF).
+      
+      b. The MODFLOW simulated discharge and the calibrated hydraulic conductivity are aggregated to the NHM reach catchments.
+
+    3) CatchmentAttributes 
+      a. In addition to the data preparation steps for river-dl and the MODFLOW data extraction, additionally relevant data variables (e.g. local soil characteristics data, river channel confinement data, local bedrock data) were identified for use as input in several modelling approaches. 
+      
+      b. Relevant NHDPlus Version 2.1 reach catchments characteristics from ScieneBase (Wieczorek et al., 2021;  https://doi.org/10.5066/F7765D7V) were collected for the Delaware River Basin (DRB) context using an automated data fetch process and a pre-built data source table stored in CatchmentAttributes\drb-gw-hw-model-prep\1_fetch\in\nhdv2_attributes_from_sciencebase.csv 
+      
+      c. Additional attributes derived from sources outside Wieczorek et al., 2021's database were also collected. Channel confinement data for the DRB from McManamay and DeRolp., 2018 (https://doi.org/10.6084/m9.figshare.c.4233740.v1), depth to bedrock measurements from Shangguan et al., 2016 (https://doi.org/10.1002/2016MS000686). 
+      
+      d. Aggregated all relevant basin characteristics and MODFLOW simulated discharge and the calibrated hydraulic conductivity into a combined NHM reach catchments attributes feather file nhm_attributes_%s.feather). This aggregated NHM attributes dataset can be found in CatchmentAttributes\drb-gw-hw-model-prep\2b_nhm_process_nhm_groundwater\nhm_attributes_20230316.feather
   
   (Processed in 02_Model_Code)
-  This step contains the code for the model. 
+  
+  Steps 4) and 5) describe the details of the model code. 
+  
+  4) Code takes the output of (1) and separates it into training, validation, and test partitions as defined by the configuration files for the Snakemake workflows. 
+  
+  5) Prepared data from (4) are used to train a Recurrent Graph Convolution Network (RGCN) process-guided deep learning stream temperature model.
+  Training is done in two phases for a base model and 4 approaches to better representing reaches influenced by discharge of deep groundwater (listed below). First, models are pre-trained on the process model outputs (PRMS-SNTemp) for the entire region and study period. After pre-training, models are fine-tuned on stream temperature observations restricted to the training period.
+  Fine-tuning is done with an early stopping metric that stops training if the loss on the validation data partition hasn't improved in 50 epochs.
+  This release contains results for 17 different models that represent a base model and variations of four approaches:
+  
+  - A base model that represent current best RGCN stream temperature models. Modelling results for this scenario are stored in 03_Model_Predictions\model_outputs\BaseModel\FullDataset.
+  	
+  - Approach 1: A custom loss function approach, where the training loss function leverages the unique patterns of coupling between air temperature and water temperature that are indicative of atmospheric or groundwater controls on stream temperature. Modelling results from five variations of this approach, each with different scaling factors, are stored in 03_Model_Predictions\model_outputs\CustomLossXX\FullDataset, where XX is the subvariation, either 1,2,3,4, or Poor.
+  	
+  - Approach 2: A groundwater-model approach, where outputs of a MODFLOW groundwater model (compiled above in 2) were used as additional input features. A variation of this approach used groundwater-related outputs from PRMS instead of MODFLOW. Modelling results for these scenarios are stored in 03_Model_Predictions\model_outputs\ProcessModelXX\FullDataset, where XX is the process-based model, either MODFLOW or PRMS.
+  	
+  - Approach 3: A input data approach that added groundwater-discharge relevant catchment attributes (3) to the input features of the base model. A second variation of this approach was tested that used a subset of the additional attributes (shortlist attributes listed in the config file). Modelling results for these models are stored in 03_Model_Predictions\model_outputs\InputDataXX\FullDataset, where XX is either All or ShortList.
+  	
+  - Approach 4: A composite model approach that combines the outputs from two different source models using either a weighted mean or threshold based on the MODFLOW-simulated groundwater discharge. Modelling results for these composite models are stored in 03_Model_Predictions\model_outputs\CompositeModelXXX\FullDataset, where XX is the compositing method, either Threshold or Weighted. Modelling results for the source models are stored in 03_Model_Predictions\model_outputs\ContributingModelXX\FullDataset, where XX is either LowGW or HighGW.
+  	
+  - A combination model that utilized both the custom loss and the additional input data. Modelling results for this model are stored in 03_Model_Predictions\model_outputs\MultipleApproaches\FullDataset.
+  	
+  - A model that skipped the pretraining step. Modelling results for this model are stored in 03_Model_Predictions\model_outputs\NoPretraining\FullDataset.
+  
+  6) Trained models are used to make predictions on the hold-out test partitions. Error metrics, including bias, root mean squared error, and nash-sutcliffe efficiency are calculated for the overall partitions,
+  by reach/partition, and by reach/month/partition. These metrics can be found in 03_Model_Predictions in the "overall_metrics.csv", "reach_metrics.csv", and "month_metrics.csv" files for each model/training run respectively.
+  
+  7) Permutation based explainable AI (XAI) is used with a subset of models to understand the learned spatial relationships within the models and how they vary across approaches to better representing groundwater discharge.
+  Workflows to recreate these experiments can be found in 03_Model_Predictions\Snakefiles and actual outputs can be found in 03_Model_Predictions\model_ouputs\XXX\FullDataset, where XXX is the model name – BaseModel, CustomLoss2, InputDataShortList, ProcessModelMODFLOW, or MultipleApproaches.
+  
+  8) A hold-out analysis, in which each groundwater-dominated reach is sequentially withheld from the fine-tuning phase, is used to test the approaches’ abilities to identify reaches influenced by groundwater discharge and apply the correct processes. Workflows to recreate these experiments can be found in 03_Model_Predictions\Snakefiles and actual outputs can be found in 03_Model_Predictions\model_ouputs\XXX\LOO, where XXX is the model name – BaseModel, CustomLoss2, InputDataShortList, ProcessModelMODFLOW, or MultipleApproaches.
+  
+  9) A grid-based sensitivity analysis was used to test different scaling factors for the components of the custom loss function. The modelling outputs from these Workflows to recreate these experiments can be found in 03_Model_Predictions/Snakefiles and actual outputs can be found in 03_Model_Predictions\model_ouputs\CustomLossSensitivityAnalysis.
+  
 
   (Processed in 03_Model_Predictions)
+  
+  10) Model run results are stored in 03_Model_Predictions\model_ouputs\ within the subfolders detailed above.  
   
 
 distro-person: Janet R. Barkley

@@ -42,11 +42,12 @@ file-format: a single comma-delimited file and a single zipped shapefile
 entities:
   -
     data-name: 01_Data_Prep.zip
-    data-description: A zipped file containing code and input files to retrieve and format data for modelling
+    data-description: A zipped file containing code and input files for the initial data preparation steps for the model runs
     attributes:
     -
       attr-label: modflow_data_extraction.zip
-      attr-def: A zipped file containing python code scripts, environment files, and output data in `data_out' from MODFLOW [XX define]. Please see README.md and data dictionary for detail description of specific files.  
+      attr-def: A zipped file containing python code scripts, environment files, and output data in 'data_out' from MODFLOW, USGS's modular hydrologic model for groundwater. This includes env files (simple & versioned), snakefile, config file, python scripts, empty folders for data_out and logs_out.
+      Please see README.md and file_dictionary.csv for a more detail description of the specific files.  
       attr-defs: >-
         This model archive
       data-min: NA
@@ -54,49 +55,50 @@ entities:
       data-units: NA
     -
       attr-label: river-dl_data_prep.zip 
-      attr-def: A zipped file containing python code scripts, environment files, and output log files and data in `log_out` adn `data_out' for river-dl model runs [XX define]. Please see README.md for detail description of specific files.
+      attr-def: A zipped file containing the data preparation files for the river-dl model. This includes env files (simple & versioned), snakefile, config file, python scripts, empty folders for data_out and logs_out. Please see README.md and file_dictionary.csv for a more detail description of the specific files.
+      
       attr-defs: >-
-        
+        This model archive
       data-min: NA
       data-max: NA
       data-units: NA
     -
       attr-label: CatchmentAttributes.zip 
-      attr-def: A zipped file containing input datasets and code script used to process attributes for XX [XX define]. Please see README.md for detail description of specific files.
+      attr-def: A zipped file containing input datasets and R code scripts used to process additional basin attributes for the model. The file is structured as a targets pipeline. Please see README.md and file_dictionary.csv for a more detail description of specific files.
       attr-defs: >-
-        
+        This model archive
       data-min: NA
       data-max: NA
       data-units: NA
   -
     data-name: 02_Model_Code.zip
-    data-description: A zip file containing...
+    data-description: A zip file containing the river-dl model code.
     attributes:
     -
       attr-label: river-dl.zip
-      attr-def: A zipped file containing river-dl model code, environment files, and worflow examples. Please see README.md for detail description of specific files and how to run model.
+      attr-def: A zipped file containing river-dl model code, environment files, and worflow examples. Please see README.md and file_dictionary.csv for a more detail description of specific files.
       attr-defs: >-
-        citation or URL of x. If citation, should appear in cross-cites. Can use NA or "This release"
+        This model archive
       data-min: NA
       data-max: NA
       data-units: NA  
   -
     data-name: 03_Model_Predictions.zip
-    data-description: A zip file containing model outputs and data_dictionary table.  XX
+    data-description: A zip file containing model outputs and file_dictionary folder.
     attributes:
     -
       attr-label: model_outputs.zip
-      attr-def: A zipped file containing river-dl model outputs. Add README.md for details on the the output folders
+      attr-def: A zipped file containing river-dl model outputs. Please see README.md and file_dictionary.csv for a more detail description of specific output folders and files.
       attr-defs: >-
-        citation or URL of x. If citation, should appear in cross-cites. Can use NA or "This release"
+        This model archive
       data-min: NA
       data-max: NA
       data-units: NA  
     -
-      attr-label: data_dictionary.xlsx
-      attr-def: Microsoft excel file describing model predictions. XX
+      attr-label: file_dictionary.zip
+      attr-def: Microsoft excel file describing model prediction outsputs. 
       attr-defs: >-
-        citation or URL of x. If citation, should appear in cross-cites. Can use NA or "This release"
+        This model archive
       data-min: NA
       data-max: NA
       data-units: NA  
@@ -147,9 +149,12 @@ funding-credits: >-
 process-description: >-
   Details of processing steps contained within this release are below. For additional information, please see the relevant README.md and file_dictionary.csv within each zipped folder:
   
+  
   (Processed in 01_Data_Prep)
   
+  
   1), 2), 3) contain the initial data preparation steps for the model runs.
+
   
     1) river-dl_data_prep
   
@@ -157,11 +162,13 @@ process-description: >-
       
       b. All drivers, reach information, and observations are munged to remove missing values and extreme outliers.
 
+
     2) modflow_data_extraction 
     
       a. MODFLOW model input and output files are downloaded from Water Node (Zell and Ward, 2020; https://doi.org/10.5066/P91LFFN1) and the National Hydrologic Model (NHM) geospatial files are downloaded from Sciencebase (Bock et al, 2020; https://doi.org/10.5066/P971JAGF).
       
       b. The MODFLOW simulated discharge and the calibrated hydraulic conductivity are aggregated to the NHM reach catchments.
+
 
     3) CatchmentAttributes 
       a. In addition to the data preparation steps for river-dl and the MODFLOW data extraction, additionally relevant data variables (e.g. local soil characteristics data, river channel confinement data, local bedrock data) were identified for use as input in several modelling approaches. 
@@ -171,12 +178,15 @@ process-description: >-
       c. Additional attributes derived from sources outside Wieczorek et al., 2021's database were also collected. Channel confinement data for the DRB from McManamay and DeRolp., 2018 (https://doi.org/10.6084/m9.figshare.c.4233740.v1), depth to bedrock measurements from Shangguan et al., 2016 (https://doi.org/10.1002/2016MS000686). 
       
       d. Aggregated all relevant basin characteristics and MODFLOW simulated discharge and the calibrated hydraulic conductivity into a combined NHM reach catchments attributes feather file nhm_attributes_%s.feather). This aggregated NHM attributes dataset can be found in CatchmentAttributes\drb-gw-hw-model-prep\2b_nhm_process_nhm_groundwater\nhm_attributes_20230316.feather
-  
+
+
   (Processed in 02_Model_Code)
   
   Steps 4) and 5) describe the details of the model code. 
   
+
   4) Code takes the output of (1) and separates it into training, validation, and test partitions as defined by the configuration files for the Snakemake workflows. 
+
   
   5) Prepared data from (4) are used to train a Recurrent Graph Convolution Network (RGCN) process-guided deep learning stream temperature model.
   Training is done in two phases for a base model and 4 approaches to better representing reaches influenced by discharge of deep groundwater (listed below). First, models are pre-trained on the process model outputs (PRMS-SNTemp) for the entire region and study period. After pre-training, models are fine-tuned on stream temperature observations restricted to the training period.
@@ -196,6 +206,7 @@ process-description: >-
   - A combination model that utilized both the custom loss and the additional input data. Modelling results for this model are stored in 03_Model_Predictions\model_outputs\MultipleApproaches\FullDataset.
   	
   - A model that skipped the pretraining step. Modelling results for this model are stored in 03_Model_Predictions\model_outputs\NoPretraining\FullDataset.
+  
   
   6) Trained models are used to make predictions on the hold-out test partitions. Error metrics, including bias, root mean squared error, and nash-sutcliffe efficiency are calculated for the overall partitions,
   by reach/partition, and by reach/month/partition. These metrics can be found in 03_Model_Predictions in the "overall_metrics.csv", "reach_metrics.csv", and "month_metrics.csv" files for each model/training run respectively.

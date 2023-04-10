@@ -3,15 +3,16 @@ title: >-
 
 
 abstract: >-
-  This data release and model archive provides all data, code, and modeling results used in Barclay et al. (2023)
+  This model archive provides all data, code, and modeling results used in Barclay et al. (2023)
   to assess the ability of process-guided deep learning stream temperature models to accurately incorporate groundwater-discharge processes.
   We assessed the performance of an existing process-guided deep learning stream temperature model of the Delaware River Basin (USA) and
   explored four approaches for improving groundwater process representation: 1) a custom loss function that leverages the unique patterns
   of air and water temperature coupling resulting from different temperature drivers, 2) inclusion of additional groundwater-relevant
   catchment attributes, 3) incorporation of additional process model outputs, and 4) a composite model. The associated manuscript examines
   changes in the predictive accuracy, feature importance, and predictive ability in un-seen reaches resulting from each of the four approaches.
-  This data release includes XXX zipped folders for 1) Data Preparation, 2) Model Code, and 3) Model Predictions. Instructions for running
-  data preparation code and modeling code can be found in the README.md files in 01_Data_Prep and 02_Model_Code respectively.
+  This model archive includes 3 zipped folders for 1) Data Preparation, 2) Model Code, and 3) Model Predictions. Instructions for running
+  data preparation and modeling code can be found in the README.md files in 01_Data_Prep and 02_Model_Code respectively. File dictionaries 
+  have also been included  and serve as metadata documentation for the files and datasets within the 3 zipped folders. 
       
 authors: ["Barclay, Janet R", "Topp, Simon N", "Koenig Snyder, Lauren E", "Sleckman, Margaux J", "Sadler, Jeffrey M", "Appling, Alison P"]
 pubdate: 2023 
@@ -42,11 +43,19 @@ file-format: a single comma-delimited file and a single zipped shapefile
 entities:
   -
     data-name: 01_Data_Prep.zip
-    data-description: A zipped file containing code and input files to retrieve and format data for modelling
+    data-description: A zipped file containing code and input files for the initial data preparation steps for the model runs.
     attributes:
     -
       attr-label: modflow_data_extraction.zip
-      attr-def: A zipped file containing python code scripts, environment files, and output data in `data_out' from MODFLOW [XX define]. Please see README.md and data dictionary for detail description of specific files.  
+      attr-def: A zipped file containing python code scripts, environment files, and output data in 'data_out' from MODFLOW, USGS's modular hydrologic model for groundwater. This includes env files (simple & versioned), snakefile, config file, python scripts, empty folders for data_out and logs_out. Please see README.md and file_dictionary.csv for a more detail description of the specific files.  
+      attr-defs: >-
+        This model archive
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: modflow_data_extraction_file_dictionary.csv
+      attr-def: A csv describing the files of the modflow data preparation step in the modflow_data_extraction directory.  
       attr-defs: >-
         This model archive
       data-min: NA
@@ -54,54 +63,76 @@ entities:
       data-units: NA
     -
       attr-label: river-dl_data_prep.zip 
-      attr-def: A zipped file containing python code scripts, environment files, and output log files and data in `log_out` adn `data_out' for river-dl model runs [XX define]. Please see README.md for detail description of specific files.
+      attr-def: A zipped file containing the data preparation files for the river-dl model. This includes env files (simple & versioned), snakefile, config file, python scripts, empty folders for data_out and logs_out. Please see README.md and file_dictionary.csv for a more detail description of the specific files.
       attr-defs: >-
-        
+        This model archive
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: river-dl_data_prep_file_dictionary.csv
+      attr-def: A csv describing the files of the river-dl data preparation step in the river-dl_data_prep directory.
+      attr-defs: >-
+        This model archive
       data-min: NA
       data-max: NA
       data-units: NA
     -
       attr-label: CatchmentAttributes.zip 
-      attr-def: A zipped file containing input datasets and code script used to process attributes for XX [XX define]. Please see README.md for detail description of specific files.
+      attr-def: A zipped file containing input datasets and R code scripts used to process additional basin catchment attributes for the model. The file is structured as a targets pipeline. Please see README.md and file_dictionary.csv for a more detail description of specific files.
       attr-defs: >-
-        
+        This model archive
       data-min: NA
       data-max: NA
       data-units: NA
-  -
+    -
+      attr-label: CatchmentAttributes_file_dictionary.zip 
+      attr-def: A zipped file containing a data_dictionary.csv and accompagnying README markdown document describing the data preparation output feather file in the CatchmentAttributes directory. 
+      attr-defs: >-
+        This model archive
+      data-min: NA
+      data-max: NA
+      data-units: NA
+  -  
     data-name: 02_Model_Code.zip
-    data-description: A zip file containing...
+    data-description: A zip file containing the river-dl model code.
     attributes:
     -
       attr-label: river-dl.zip
-      attr-def: A zipped file containing river-dl model code, environment files, and worflow examples. Please see README.md for detail description of specific files and how to run model.
+      attr-def: A zipped file containing river-dl model code, environment files, and worflow examples. Please see river-dl/README.md and file_dictionary.csv for guidance on how to run the code.
       attr-defs: >-
-        citation or URL of x. If citation, should appear in cross-cites. Can use NA or "This release"
+        This model archive
+      data-min: NA
+      data-max: NA
+      data-units: NA  
+    -
+      attr-label: river-dl_file_dictionary.csv
+      attr-def: A csv describing the files in river-dl model code directory.
+      attr-defs: >-
+        This model archive
       data-min: NA
       data-max: NA
       data-units: NA  
   -
     data-name: 03_Model_Predictions.zip
-    data-description: A zip file containing model outputs and data_dictionary table.  XX
+    data-description: A zip file containing model outputs and file_dictionary folder.
     attributes:
     -
       attr-label: model_outputs.zip
-      attr-def: A zipped file containing river-dl model outputs. Add README.md for details on the the output folders
+      attr-def: A zipped file containing river-dl model outputs. Please see README.md and file_dictionary.csv for a more detail description of specific output folders and files.
       attr-defs: >-
-        citation or URL of x. If citation, should appear in cross-cites. Can use NA or "This release"
+        This model archive
       data-min: NA
       data-max: NA
       data-units: NA  
     -
-      attr-label: data_dictionary.xlsx
-      attr-def: Microsoft excel file describing model predictions. XX
+      attr-label: model_outputs_file_dictionary.zip
+      attr-def: A zipped file containing data_dictionary.csv and accompagnying README markdown document describing the model outputs files in the model_outputs directory. 
       attr-defs: >-
-        citation or URL of x. If citation, should appear in cross-cites. Can use NA or "This release"
+        This model archive
       data-min: NA
       data-max: NA
       data-units: NA  
- 
-
 
 purpose: Fisheries biology, limnological research, and climate science.
 start-date: 19800401
@@ -141,11 +172,95 @@ metadata-date: !expr format(Sys.time(),'%Y%m%d')
 
 accur-test: No formal attribute accuracy tests were conducted.
 funding-credits: >-
-  This study was funded by the [DETAILS HERE]
+  This study was funded by the USGS with support from the U.S. Department of Energy, Office of Science, Office of Biological and Environmental Research, under Interagency Agreement Number 89243021SSC000068 as part of the ExaSheds project.
   This research used resources of the Core Science Analytics and Synthesis Advanced Research Computing program at the U.S. Geological Survey.
 
 process-description: >-
-  [A description of processing]
+  Details of processing steps contained within this release are below. For additional information, please see the relevant README.md and file_dictionary.csv within each zipped folder:
+  
+  
+  (Processed in 01_Data_Prep)
+  
+  
+  1), 2), 3) contain the initial data preparation steps for the model runs.
+
+  
+    1) river-dl_data_prep
+  
+      a. Initial data for river-dl is downloaded from ScienceBase (Oliver et al, 2022; https://doi.org/10.5066/P9GUHX1U). This data includes daily meteorological drivers (1980-2022), river reach characteristics, process model outputs, stream temperature observations, and an adjacency matrix detailing spatial relationships for 456 river reaches within the Delaware River Basin.
+      
+      b. All drivers, reach information, and observations are munged to remove missing values and extreme outliers.
+
+
+    2) modflow_data_extraction 
+    
+      a. MODFLOW model input and output files are downloaded from Water Node (Zell and Ward, 2020; https://doi.org/10.5066/P91LFFN1) and the National Hydrologic Model (NHM) geospatial files are downloaded from Sciencebase (Bock et al, 2020; https://doi.org/10.5066/P971JAGF).
+      
+      b. The MODFLOW simulated discharge and the calibrated hydraulic conductivity are aggregated to the NHM reach catchments.
+
+
+    3) CatchmentAttributes 
+
+      a. In addition to the data preparation steps for river-dl and the MODFLOW data extraction, additionally relevant data variables (e.g. local soil characteristics data, river channel confinement data, local bedrock data) were identified for use as input in several modelling approaches. 
+      
+      b. Relevant NHDPlus Version 2.1 reach catchments characteristics from ScieneBase (Wieczorek et al., 2021;  https://doi.org/10.5066/F7765D7V) were collected for the Delaware River Basin (DRB) context using an automated data fetch process and a pre-built data source table stored in CatchmentAttributes\drb-gw-hw-model-prep\1_fetch\in\nhdv2_attributes_from_sciencebase.csv 
+      
+      c. Additional attributes derived from sources outside Wieczorek et al., 2021's database were also collected. Channel confinement data for the DRB from McManamay and DeRolp., 2018 (https://doi.org/10.6084/m9.figshare.c.4233740.v1), depth to bedrock measurements from Shangguan et al., 2016 (https://doi.org/10.1002/2016MS000686). 
+      
+      d. Aggregated all relevant basin characteristics and MODFLOW simulated discharge and the calibrated hydraulic conductivity into a combined NHM reach catchments attributes feather file nhm_attributes_%s.feather). This aggregated NHM attributes dataset can be found in CatchmentAttributes\drb-gw-hw-model-prep\2b_nhm_process_nhm_groundwater\nhm_attributes_20230316.feather
+
+
+  (Processed in 02_Model_Code)
+  
+  Steps 4) and 5) describe the details of the model code. 
+  
+
+  4) Code takes the output of (1) and separates it into training, validation, and test partitions as defined by the configuration files for the Snakemake workflows. 
+
+  
+  5) Prepared data from (4) are used to train a Recurrent Graph Convolution Network (RGCN) process-guided deep learning stream temperature model.
+  Training is done in two phases for a base model and 4 approaches to better representing reaches influenced by discharge of deep groundwater (listed below). First, models are pre-trained on the process model outputs (PRMS-SNTemp) for the entire region and study period. After pre-training, models are fine-tuned on stream temperature observations restricted to the training period.
+  Fine-tuning is done with an early stopping metric that stops training if the loss on the validation data partition hasn't improved in 50 epochs. 
+
+  This release contains results for 17 different models that represent a base model and variations of four approaches:
+
+  
+  - A base model that represent current best RGCN stream temperature models. Modelling results for this scenario are stored in 03_Model_Predictions\model_outputs\BaseModel\FullDataset.
+  	
+  - Approach 1: A custom loss function approach, where the training loss function leverages the unique patterns of coupling between air temperature and water temperature that are indicative of atmospheric or groundwater controls on stream temperature. Modelling results from five variations of this approach, each with different scaling factors, are stored in 03_Model_Predictions\model_outputs\CustomLossXX\FullDataset, where XX is the subvariation, either 1,2,3,4, or Poor.
+  	
+  - Approach 2: A groundwater-model approach, where outputs of a MODFLOW groundwater model (compiled above in 2) were used as additional input features. A variation of this approach used groundwater-related outputs from PRMS instead of MODFLOW. Modelling results for these scenarios are stored in 03_Model_Predictions\model_outputs\ProcessModelXX\FullDataset, where XX is the process-based model, either MODFLOW or PRMS.
+  	
+  - Approach 3: A input data approach that added groundwater-discharge relevant catchment attributes (3) to the input features of the base model. A second variation of this approach was tested that used a subset of the additional attributes (shortlist attributes listed in the config file). Modelling results for these models are stored in 03_Model_Predictions\model_outputs\InputDataXX\FullDataset, where XX is either All or ShortList.
+  	
+  - Approach 4: A composite model approach that combines the outputs from two different source models using either a weighted mean or threshold based on the MODFLOW-simulated groundwater discharge. Modelling results for these composite models are stored in 03_Model_Predictions\model_outputs\CompositeModelXXX\FullDataset, where XX is the compositing method, either Threshold or Weighted. Modelling results for the source models are stored in 03_Model_Predictions\model_outputs\ContributingModelXX\FullDataset, where XX is either LowGW or HighGW.
+  	
+  - A combination model that utilized both the custom loss and the additional input data. Modelling results for this model are stored in 03_Model_Predictions\model_outputs\MultipleApproaches\FullDataset.
+  	
+  - A model that skipped the pretraining step. Modelling results for this model are stored in 03_Model_Predictions\model_outputs\NoPretraining\FullDataset.
+  
+
+  
+  6) Trained models are used to make predictions on the hold-out test partitions. Error metrics, including bias, root mean squared error, and nash-sutcliffe efficiency are calculated for the overall partitions,
+  by reach/partition, and by reach/month/partition. These metrics can be found in 03_Model_Predictions in the "overall_metrics.csv", "reach_metrics.csv", and "month_metrics.csv" files for each model/training run respectively.
+
+  
+  7) Permutation based explainable AI (XAI) is used with a subset of models to understand the learned spatial relationships within the models and how they vary across approaches to better representing groundwater discharge.
+  Workflows to recreate these experiments can be found in 03_Model_Predictions\Snakefiles and actual outputs can be found in 03_Model_Predictions\model_ouputs\XXX\FullDataset, where XXX is the model name – BaseModel, CustomLoss2, InputDataShortList, ProcessModelMODFLOW, or MultipleApproaches.
+
+  
+  8) A hold-out analysis, in which each groundwater-dominated reach is sequentially withheld from the fine-tuning phase, is used to test the approaches’ abilities to identify reaches influenced by groundwater discharge and apply the correct processes. Workflows to recreate these experiments can be found in 03_Model_Predictions\Snakefiles and actual outputs can be found in 03_Model_Predictions\model_ouputs\XXX\LOO, where XXX is the model name – BaseModel, CustomLoss2, InputDataShortList, ProcessModelMODFLOW, or MultipleApproaches.
+
+  
+  9) A grid-based sensitivity analysis was used to test different scaling factors for the components of the custom loss function. The modelling outputs from these Workflows to recreate these experiments can be found in 03_Model_Predictions/Snakefiles and actual outputs can be found in 03_Model_Predictions\model_ouputs\CustomLossSensitivityAnalysis.
+  
+
+  (Processed in 03_Model_Predictions)
+
+  
+  10) Model run results are stored in 03_Model_Predictions\model_ouputs\ within the subfolders detailed above.  
+
+  
 
 distro-person: Janet R. Barkley
 liability-statement: >-

@@ -20,22 +20,14 @@ doi: https://doi.org/10.5066/P9KO49OT
 
 build-environment: Multiple computer systems were used to generate these data, including linux, OSX. The open source languages R and Python were used on all systems.
 
-# ----associated publication----
-larger-cites:
-  -
-    authors: ["Jordan S. Read", "Xiaowei Jia", "Jared Willard", "Alison P. Appling", "Jacob A. Zwart","Samantha K. Oliver","Anuj Karpatne","Gretchen J.A. Hansen", "Paul C. Hanson", "William Watkins", "Michael Steinbach","Vipin Kumar"]
-    title: >-
-      Process-guided deep learning predictions of lake water temperature
-    pubdate: 2019
-
 # ----supporting publications----    
 cross-cites:
   -
-    authors: ['Luke A. Winslow','Gretchen J.A. Hansen','Jordan S. Read','Michael Notaro']
+    authors: ["Samantha K Oliver", "Margaux J Sleckman", "Alison P Appling", "Hayley R Corson-Dosch", "Jacob A Zwart","Theodore P Thompson","Lauren Koenig","Ellie White","David Watkins","Lindsay R Platt","Julie A Padilla", "Jeffrey M Sadler"]
     title: >-
-      Large-scale modeled contemporary and future water temperature estimates for 10,774 Midwestern U.S. Lakes
-    pubdate: 2017
-    link: http://dx.doi.org/10.1038/sdata.2017.53
+      Data to support water quality modeling efforts in the Delaware River Basin
+    pubdate: 2022
+    link: http://dx.doi.org/10.5066/P9GUHX1U
 
 process-date: !expr format(Sys.time(),'%Y%m%d')
 file-format: a single comma-delimited file and a single zipped shapefile
@@ -134,12 +126,12 @@ entities:
       data-max: NA
       data-units: NA  
 
-purpose: Fisheries biology, limnological research, and climate science.
-start-date: 19800401
-end-date: 20191231
+purpose: This archive is relevant to better incorporation of groundwater discharge into stream temperature predictions and exploration of approaches to adding knowledge guidance to deep learning models.
+start-date: 19791001
+end-date: 20210930
 
 update: none planned
-themekeywords: ["machine learning", "deep learning", "hybrid modeling", "water","temperature", "temperate lakes","reservoirs","modeling","climate change","thermal profiles"]
+themekeywords: ["machine learning", "deep learning", "hybrid modeling", "water", "temperature", "modeling", "climate change", "groundwater", "process guided deep learning", "explainable AI (XAI)", "stream temperature"]
 
 usage-rules: >-
   These data are open access usable via creative commons as long as original data providers are acknowledged
@@ -246,19 +238,19 @@ process-description: >-
 
   
   7) Permutation based explainable AI (XAI) is used with a subset of models to understand the learned spatial relationships within the models and how they vary across approaches to better representing groundwater discharge.
-  Workflows to recreate these experiments can be found in 03_Model_Predictions\Snakefiles and actual outputs can be found in 03_Model_Predictions\model_ouputs\XXX\FullDataset, where XXX is the model name – BaseModel, CustomLoss2, InputDataShortList, ProcessModelMODFLOW, or MultipleApproaches.
+  Workflows to recreate these experiments can be found in 03_Model_Predictions\Snakefiles and actual outputs can be found in 03_Model_Predictions\model_outputs\XXX\FullDataset, where XXX is the model name – BaseModel, CustomLoss2, InputDataShortList, ProcessModelMODFLOW, or MultipleApproaches.
 
   
-  8) A hold-out analysis, in which each groundwater-dominated reach is sequentially withheld from the fine-tuning phase, is used to test the approaches’ abilities to identify reaches influenced by groundwater discharge and apply the correct processes. Workflows to recreate these experiments can be found in 03_Model_Predictions\Snakefiles and actual outputs can be found in 03_Model_Predictions\model_ouputs\XXX\LOO, where XXX is the model name – BaseModel, CustomLoss2, InputDataShortList, ProcessModelMODFLOW, or MultipleApproaches.
+  8) A hold-out analysis, in which each groundwater-dominated reach is sequentially withheld from the fine-tuning phase, is used to test the approaches’ abilities to identify reaches influenced by groundwater discharge and apply the correct processes. Workflows to recreate these experiments can be found in 03_Model_Predictions\Snakefiles and actual outputs can be found in 03_Model_Predictions\model_outputs\XXX\LOO, where XXX is the model name – BaseModel, CustomLoss2, InputDataShortList, ProcessModelMODFLOW, or MultipleApproaches.
 
   
-  9) A grid-based sensitivity analysis was used to test different scaling factors for the components of the custom loss function. The modelling outputs from these Workflows to recreate these experiments can be found in 03_Model_Predictions/Snakefiles and actual outputs can be found in 03_Model_Predictions\model_ouputs\CustomLossSensitivityAnalysis.
+  9) A grid-based sensitivity analysis was used to test different scaling factors for the components of the custom loss function. Workflows to recreate these experiments can be found in 03_Model_Predictions/Snakefiles and actual outputs can be found in 03_Model_Predictions\model_outputs\CustomLossSensitivityAnalysis.
   
 
   (Processed in 03_Model_Predictions)
 
   
-  10) Model run results are stored in 03_Model_Predictions\model_ouputs\ within the subfolders detailed above.  
+  10) Model run results are stored in 03_Model_Predictions\model_outputs\ within the subfolders detailed above.  
 
   
 

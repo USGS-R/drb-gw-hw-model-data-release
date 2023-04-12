@@ -47,8 +47,8 @@ entities:
     data-description: A zipped file containing code and input files for the initial data preparation steps for the model runs.
     attributes:
     -
-      attr-label: modflow_data_extraction.zip
-      attr-def: A zipped file containing python code scripts, environment files, and output data in 'data_out' from MODFLOW, USGS's modular hydrologic model for groundwater. This includes env files (simple & versioned), snakefile, config file, python scripts, empty folders for data_out and logs_out. Please see README.md and file_dictionary.csv for a more detail description of the specific files.  
+      attr-label: modflow_data_extraction
+      attr-def: Directory containing python code scripts, environment files, and output data in 'data_out' from MODFLOW, USGS's modular hydrologic model for groundwater. This includes env files (simple & versioned), snakefile, config file, python scripts, empty folders for data_out and logs_out. Please see README.md and file_dictionary.csv for a more detail description of the specific files.  
       attr-defs: >-
         This model archive
       data-min: NA
@@ -63,8 +63,8 @@ entities:
       data-max: NA
       data-units: NA
     -
-      attr-label: river-dl_data_prep.zip 
-      attr-def: A zipped file containing the data preparation files for the river-dl model. This includes env files (simple & versioned), snakefile, config file, python scripts, empty folders for data_out and logs_out. Please see README.md and file_dictionary.csv for a more detail description of the specific files.
+      attr-label: river-dl_data_prep 
+      attr-def: Directory containing the data preparation files for the river-dl model. This includes env files (simple & versioned), snakefile, config file, python scripts, empty folders for data_out and logs_out. Please see README.md and file_dictionary.csv for a more detail description of the specific files.
       attr-defs: >-
         This model archive
       data-min: NA
@@ -79,16 +79,16 @@ entities:
       data-max: NA
       data-units: NA
     -
-      attr-label: CatchmentAttributes.zip 
-      attr-def: A zipped file containing input datasets and R code scripts used to process additional basin catchment attributes for the model. The file is structured as a targets pipeline. Please see README.md and file_dictionary.csv for a more detail description of specific files.
+      attr-label: CatchmentAttributes
+      attr-def: Directory containing input datasets and R code scripts used to process additional basin catchment attributes for the model. The file is structured as a targets pipeline. Please see README.md and file_dictionary.csv for a more detail description of specific files.
       attr-defs: >-
         This model archive
       data-min: NA
       data-max: NA
       data-units: NA
     -
-      attr-label: CatchmentAttributes_file_dictionary.zip 
-      attr-def: A zipped file containing a data_dictionary.csv and accompagnying README markdown document describing the data preparation output feather file in the CatchmentAttributes directory. 
+      attr-label: CatchmentAttributes_file_dictionary 
+      attr-def: Directory containing a data_dictionary.csv and accompagnying README markdown document describing the data preparation output feather file for the code pipeline in CatchmentAttributes directory. 
       attr-defs: >-
         This model archive
       data-min: NA
@@ -99,8 +99,8 @@ entities:
     data-description: A zip file containing the river-dl model code.
     attributes:
     -
-      attr-label: river-dl.zip
-      attr-def: A zipped file containing river-dl model code, environment files, and worflow examples. Please see river-dl/README.md and file_dictionary.csv for guidance on how to run the code.
+      attr-label: river-dl
+      attr-def: Directory containing river-dl model code, environment files, and worflow examples. Please see river-dl/README.md and file_dictionary.csv for guidance on how to run the code.
       attr-defs: >-
         This model archive
       data-min: NA
@@ -119,8 +119,8 @@ entities:
     data-description: A zip file containing model outputs and file_dictionary folder.
     attributes:
     -
-      attr-label: model_outputs.zip
-      attr-def: A zipped file containing river-dl model outputs. Please see README.md and file_dictionary.csv for a more detail description of specific output folders and files.
+      attr-label: model_outputs
+      attr-def: Directory containing river-dl model outputs. Please see README.md and file_dictionary.csv for a more detail description of specific output folders and files.
       attr-defs: >-
         This model archive
       data-min: NA
@@ -135,8 +135,8 @@ entities:
       data-max: NA
       data-units: NA  
     -
-      attr-label: Snakefiles.zip
-      attr-def: A zipped file containing snakemakes files for model runs. Please see model_outputs/README.md and Snakemake_file_dictionary.csv for a more detail description of specific files.
+      attr-label: Snakefiles
+      attr-def: Directory containing snakemakes files for model runs. Please see model_outputs/README.md and Snakemake_file_dictionary.csv for a more detail description of specific files.
       attr-defs: >-
         This model archive
       data-min: NA

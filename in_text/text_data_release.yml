@@ -1,7 +1,6 @@
 title: >-
   Incorporating groundwater discharge processes into process-guided deep-learning temperature models
 
-
 abstract: >-
   This model archive provides all data, code, and modeling results used in Barclay et al. (2023)
   to assess the ability of process-guided deep learning stream temperature models to accurately incorporate groundwater-discharge processes.
@@ -19,6 +18,16 @@ pubdate: 2023
 doi: https://doi.org/10.5066/P9KO49OT
 
 build-environment: Multiple computer systems were used to generate these data, including linux, OSX. The open source languages R and Python were used on all systems.
+
+# ----associated publication----
+## NOTE: citation to be confirmed after manuscript is accepted by journal
+
+larger-cites:
+  -
+    authors: ["Janet R. Barclay","Lauren E. Koenig Snyder","Simon N. Topp", "Margaux J. Sleckman","Alison P. Appling"]
+    title: >-
+      tbd  # TO BE COMPLETED ONCE MANUSCRIPT IS ACCEPTED
+    pubdate: 2023
 
 # ----supporting publications----    
 cross-cites:
@@ -125,6 +134,24 @@ entities:
       data-min: NA
       data-max: NA
       data-units: NA  
+    -
+      attr-label: Snakefiles.zip
+      attr-def: A zipped file containing snakemakes files for model runs. Please see model_outputs/README.md and Snakemake_file_dictionary.csv for a more detail description of specific files.
+      attr-defs: >-
+        This model archive
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    - 
+      attr-label: Snakefiles_file_dictionary.csv
+      attr-def: A csv describing the snakemake files used in the model runs and stored in the Snakefiles directory.
+      attr-defs: >-
+        This model archive
+      data-min: NA
+      data-max: NA
+      data-units: NA
+
+
 
 purpose: This archive is relevant to better incorporation of groundwater discharge into stream temperature predictions and exploration of approaches to adding knowledge guidance to deep learning models.
 start-date: 19791001

@@ -131,7 +131,7 @@ start-date: 19791001
 end-date: 20210930
 
 update: none planned
-themekeywords: ["machine learning", "deep learning", "hybrid modeling", "water", "temperature", "modeling", "climate change", "groundwater", "process guided deep learning", "explainable AI (XAI)", "stream temperature"]
+themekeywords: ["machine learning", "deep learning", "hybrid modeling", "water", "temperature", "modeling", "groundwater", "process guided deep learning", "explainable AI (XAI)", "stream temperature"]
 
 usage-rules: >-
   These data are open access usable via creative commons as long as original data providers are acknowledged

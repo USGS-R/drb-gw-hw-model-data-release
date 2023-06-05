@@ -1,0 +1,38 @@
+[
+  {
+    "name": "drb-gw-hw-model-data-release",
+    "organization": "U.S. Geological Survey",
+    "description": "drb-gw-hw-model-data-release",
+    "version": "main",
+    "status": "Development",
+    "permissions": {
+      "usageType": "openSource",
+      "licenses": [
+        {
+          "name": "Public Domain, CC0-1.0",
+          "URL": "https://code.usgs.gov/wma/wp/data-releases/drb-gw-hw-model-data-release/-/raw/main/LICENSE.md"
+        }
+      ]
+    },
+    "homepageURL": "https://code.usgs.gov/wma/wp/data-releases/drb-gw-hw-model-data-release",
+    "downloadURL": "https://code.usgs.gov/wma/wp/data-releases/drb-gw-hw-model-data-release/-/archive/main/drb-gw-hw-model-data-release-main.zip",
+    "disclaimerURL": "https://code.usgs.gov/wma/wp/data-releases/drb-gw-hw-model-data-release/-/raw/main/DISCLAIMER.md",
+    "repositoryURL": "https://code.usgs.gov/wma/wp/data-releases/drb-gw-hw-model-data-release.git",
+    "vcs": "git",
+    "laborHours": 80,
+    "tags": [
+      "R",
+      "USGS"
+    ],
+    "languages": [
+      "R"
+    ],
+    "contact": {
+      "name": "Margaux Sleckman",
+      "email": "msleckman@usgs.gov"
+    },
+    "date": {
+      "metadataLastUpdated": "2023-06-02"
+    }
+  }
+]

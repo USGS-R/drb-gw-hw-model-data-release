@@ -10,14 +10,14 @@ abstract: >-
   catchment attributes, 3) incorporation of additional process model outputs, and 4) a composite model. The associated manuscript examines
   changes in the predictive accuracy, feature importance, and predictive ability in un-seen reaches resulting from each of the four approaches.
   This model archive includes 3 zipped folders for 1) Data Preparation, 2) Model Code, and 3) Model Predictions. Instructions for running
-  data preparation and modeling code can be found in the README.md files in 01_Data_Prep and 02_Model_Code respectively. File dictionaries 
-  have also been included  and serve as metadata documentation for the files and datasets within the 3 zipped folders. 
+  data preparation and modeling code can be found in the README.md files in 01_Data_Prep and 02_Model_Code respectively. File dictionaries
+  have also been included and serve as metadata documentation for the files and datasets within the 3 zipped folders. 
       
 authors: ["Barclay, Janet R", "Topp, Simon N", "Koenig Snyder, Lauren E", "Sleckman, Margaux J", "Sadler, Jeffrey M", "Appling, Alison P"]
 pubdate: 2023 
 doi: https://doi.org/10.5066/P9KO49OT
 
-build-environment: Multiple computer systems were used to generate these data, including linux, OSX. The open source languages R and Python were used on all systems.
+build-environment: Multiple computer systems were used to generate these data, including linux and OSX. The open-source languages R and Python were used on all systems.
 
 # ----associated publication----
 ## NOTE: citation to be confirmed after manuscript is accepted by journal
@@ -100,7 +100,7 @@ entities:
     attributes:
     -
       attr-label: river-dl
-      attr-def: Directory containing river-dl model code, environment files, and worflow examples. Please see river-dl/README.md and file_dictionary.csv for guidance on how to run the code.
+      attr-def: Directory containing river-dl model code, environment files, and workflow examples. Please see river-dl/README.md and file_dictionary.csv for guidance on how to run the code.
       attr-defs: >-
         This model archive
       data-min: NA
@@ -128,7 +128,7 @@ entities:
       data-units: NA  
     -
       attr-label: model_outputs_file_dictionary.zip
-      attr-def: A zipped file containing data_dictionary.csv and accompagnying README markdown document describing the model outputs files in the model_outputs directory. 
+      attr-def: A zipped file containing data_dictionary.csv and accompanying README markdown document describing the model outputs files in the model_outputs directory. 
       attr-defs: >-
         This model archive
       data-min: NA
@@ -250,7 +250,7 @@ process-description: >-
   	
   - Approach 2: A groundwater-model approach, where outputs of a MODFLOW groundwater model (compiled above in 2) were used as additional input features. A variation of this approach used groundwater-related outputs from PRMS instead of MODFLOW. Modelling results for these scenarios are stored in 03_Model_Predictions\model_outputs\ProcessModelXX\FullDataset, where XX is the process-based model, either MODFLOW or PRMS.
   	
-  - Approach 3: A input data approach that added groundwater-discharge relevant catchment attributes (3) to the input features of the base model. A second variation of this approach was tested that used a subset of the additional attributes (shortlist attributes listed in the config file). Modelling results for these models are stored in 03_Model_Predictions\model_outputs\InputDataXX\FullDataset, where XX is either All or ShortList.
+  - Approach 3: An input data approach that added groundwater-discharge relevant catchment attributes (3) to the input features of the base model. A second variation of this approach was tested that used a subset of the additional attributes (shortlist attributes listed in the config file). Modelling results for these models are stored in 03_Model_Predictions\model_outputs\InputDataXX\FullDataset, where XX is either All or ShortList.
   	
   - Approach 4: A composite model approach that combines the outputs from two different source models using either a weighted mean or threshold based on the MODFLOW-simulated groundwater discharge. Modelling results for these composite models are stored in 03_Model_Predictions\model_outputs\CompositeModelXXX\FullDataset, where XX is the compositing method, either Threshold or Weighted. Modelling results for the source models are stored in 03_Model_Predictions\model_outputs\ContributingModelXX\FullDataset, where XX is either LowGW or HighGW.
   	

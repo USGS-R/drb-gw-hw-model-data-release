@@ -88,7 +88,7 @@ entities:
       data-units: NA
     -
       attr-label: CatchmentAttributes_file_dictionary 
-      attr-def: Directory containing a data_dictionary.csv and accompagnying README markdown document describing the data preparation output feather file for the code pipeline in CatchmentAttributes directory. 
+      attr-def: Directory containing a data_dictionary.csv and accompanying README markdown document describing the data preparation output feather file for the code pipeline in CatchmentAttributes directory. 
       attr-defs: >-
         This model archive
       data-min: NA

@@ -1,5 +1,5 @@
 title: >-
-  Incorporating groundwater discharge processes into process-guided deep-learning temperature models
+  Model code, outputs, and supporting data for approaches to process-guided deep learning for groundwater-influenced stream temperature predictions
 
 abstract: >-
   This model archive provides all data, code, and modeling results used in Barclay et al. (2023)
@@ -9,9 +9,10 @@ abstract: >-
   of air and water temperature coupling resulting from different temperature drivers, 2) inclusion of additional groundwater-relevant
   catchment attributes, 3) incorporation of additional process model outputs, and 4) a composite model. The associated manuscript examines
   changes in the predictive accuracy, feature importance, and predictive ability in un-seen reaches resulting from each of the four approaches.
-  This model archive includes 3 zipped folders for 1) Data Preparation, 2) Model Code, and 3) Model Predictions. Instructions for running
-  data preparation and modeling code can be found in the README.md files in 01_Data_Prep and 02_Model_Code respectively. File dictionaries
-  have also been included and serve as metadata documentation for the files and datasets within the 3 zipped folders. 
+  This model archive includes 3 zipped folders for 1) Data Preparation, 2) Model Code, and 3) Model Predictions, as well as the catchment attributes
+  that were compiled for reaches in the study area.Instructions for running data preparation and modeling code can be found in the README.md files
+  in 01_Data_Prep and 02_Model_Code respectively. File dictionaries have also been included and serve as metadata documentation
+  for the files and datasets within the 3 zipped folders. 
       
 authors: ["Barclay, Janet R", "Topp, Simon N", "Koenig Snyder, Lauren E", "Sleckman, Margaux J", "Sadler, Jeffrey M", "Appling, Alison P"]
 pubdate: 2023 

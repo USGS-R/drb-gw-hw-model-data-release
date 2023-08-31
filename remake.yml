@@ -19,6 +19,7 @@ targets:
       - out_data/01_Data_Prep.zip
       - out_data/02_Model_Code.zip
       - out_data/03_Model_Predictions.zip
+      - out_data/nhm_attributes.zip
 
   ## Adding DRB boundary 
   sf_spatial_data:
@@ -39,9 +40,12 @@ targets:
   
   out_data/03_Model_Predictions.zip:
     command: zip_this(target_name, .object = 'in_data/03_Model_Predictions')
+
+  out_data/nhm_attributes.zip:
+    command: zip_this(target_name, .object = 'in_data/nhm_attributes')
       
   log/sb_posted_files.csv:
-    command: sb_replace_files(filename = target_name, sb_id = sbid, "out_data/01_Data_Prep.zip", "out_data/02_Model_Code.zip", "out_data/03_Model_Predictions.zip", "out_xml/fgdc_metadata.xml", sources = "src/sb_utils.R")
+    command: sb_replace_files(filename = target_name, sb_id = sbid, "out_data/01_Data_Prep.zip", "out_data/02_Model_Code.zip", "out_data/03_Model_Predictions.zip", "out_data/nhm_attributes.zip", "out_xml/fgdc_metadata.xml", sources = "src/sb_utils.R")
         
     # ------ SB IDs --------
   

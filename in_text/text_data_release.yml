@@ -128,8 +128,8 @@ entities:
       data-max: NA
       data-units: NA  
     -
-      attr-label: model_outputs_file_dictionary.zip
-      attr-def: A zipped file containing data_dictionary.csv and accompanying README markdown document describing the model outputs files in the model_outputs directory. 
+      attr-label: model_outputs_file_dictionary
+      attr-def: Directory containing data_dictionary.csv and accompanying README markdown document describing the model outputs files in the model_outputs directory. 
       attr-defs: >-
         This model archive
       data-min: NA
@@ -151,6 +151,23 @@ entities:
       data-min: NA
       data-max: NA
       data-units: NA
+    -
+      attr-label: Figures
+      attr-def: Directory containing data and files used to produce Figures for the manuscript. Please see README.md and file_dictionary.csv for a more detail description of specific output folders and files.
+      attr-defs: >-
+        This model archive
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: Figures_file_dictionary
+      attr-def: Directory containing a file_dictionary.csv, data_dictionary.csv and accompanying README markdown document describing the input data and files in the Figures directory.
+      attr-defs: >-
+        This model archive
+      data-min: NA
+      data-max: NA
+      data-units: NA
+
 
 
 
@@ -279,9 +296,11 @@ process-description: >-
 
   
   10) Model run results are stored in 03_Model_Predictions\model_outputs\ within the subfolders detailed above.  
-
   
 
+  11) Figures in the manuscript are stored in 03_Model_Predictions\Figures\ and can be regenerated using the Figures.R script and the input data in that same directory.  
+
+  
 distro-person: Janet R. Barkley
 liability-statement: >-
   Unless otherwise stated, all data, metadata and related materials are considered to satisfy the quality standards relative to the purpose for which the data were collected.

@@ -244,7 +244,7 @@ process-description: >-
       
       c. Additional attributes derived from sources outside Wieczorek et al., 2021's database were also collected. Channel confinement data for the DRB from McManamay and DeRolp., 2018 (https://doi.org/10.6084/m9.figshare.c.4233740.v1), depth to bedrock measurements from Shangguan et al., 2016 (https://doi.org/10.1002/2016MS000686). 
       
-      d. Aggregated all relevant basin characteristics and MODFLOW simulated discharge and the calibrated hydraulic conductivity into a combined NHM reach catchments attributes feather file nhm_attributes_%s.feather). This aggregated NHM attributes dataset can be found in CatchmentAttributes\drb-gw-hw-model-prep\2b_nhm_process_nhm_groundwater\nhm_attributes_20230316.feather
+      d. Aggregated all relevant basin characteristics and MODFLOW simulated discharge and the calibrated hydraulic conductivity into a combined NHM reach catchments attributes feather file (nhm_attributes_%s.feather). This aggregated NHM attributes dataset can be found in CatchmentAttributes\drb-gw-hw-model-prep\2b_nhm_process_nhm_groundwater\nhm_attributes_20230316.feather
 
 
   (Processed in 02_Model_Code)
@@ -298,7 +298,7 @@ process-description: >-
   10) Model run results are stored in 03_Model_Predictions\model_outputs\ within the subfolders detailed above.  
   
 
-  11) Figures in the manuscript can be generated from the Figures.R script and input data stored in in 03_Model_Predictions\Figures.  
+  11) Figures in the manuscript can be generated from the FigureScript.R script, input data stored in 03_Model_Predictions\Figures, and model outputs stored in the 03_Model_Predictions\model_outputs\ directory.  
 
   
 distro-person: Janet R. Barkley

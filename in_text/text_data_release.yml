@@ -240,7 +240,7 @@ process-description: >-
 
       a. In addition to the data preparation steps for river-dl and the MODFLOW data extraction, additionally relevant data variables (e.g. local soil characteristics data, river channel confinement data, local bedrock data) were identified for use as input in several modelling approaches. 
       
-      b. Relevant NHDPlus Version 2.1 reach catchments characteristics from ScieneBase (Wieczorek et al., 2021;  https://doi.org/10.5066/F7765D7V) were collected for the Delaware River Basin (DRB) context using an automated data fetch process and a pre-built data source table stored in CatchmentAttributes\drb-gw-hw-model-prep\1_fetch\in\nhdv2_attributes_from_sciencebase.csv 
+      b. Relevant NHDPlus Version 2.1 reach catchments characteristics from ScieneBase (Wieczorek et al., 2021;  https://doi.org/10.5066/F7765D7V) were collected for the Delaware River Basin (DRB) context using an automated data fetch process and a pre-built data source table found in 01_Data_Prep\CatchmentAttributes\1_fetch\in\nhdv2_attributes_from_sciencebase.csv 
       
       c. Additional attributes derived from sources outside Wieczorek et al., 2021's database were also collected. Channel confinement data for the DRB from McManamay and DeRolp., 2018 (https://doi.org/10.6084/m9.figshare.c.4233740.v1), depth to bedrock measurements from Shangguan et al., 2016 (https://doi.org/10.1002/2016MS000686). 
       
@@ -298,7 +298,7 @@ process-description: >-
   10) Model run results are stored in 03_Model_Predictions\model_outputs\ within the subfolders detailed above.  
   
 
-  11) Figures in the manuscript are stored in 03_Model_Predictions\Figures\ and can be regenerated using the Figures.R script and the input data in that same directory.  
+  11) Figures in the manuscript can be generated from the Figures.R script and input data stored in in 03_Model_Predictions\Figures.  
 
   
 distro-person: Janet R. Barkley

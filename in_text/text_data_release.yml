@@ -2,19 +2,19 @@ title: >-
   Model code, outputs, and supporting data for approaches to process-guided deep learning for groundwater-influenced stream temperature predictions
 
 abstract: >-
-  This model archive provides all data, code, and modeling results used in Barclay et al. (2023)
+  This model archive provides all data, code, and modeling results used in Barclay and others (2023)
   to assess the ability of process-guided deep learning stream temperature models to accurately incorporate groundwater-discharge processes.
   We assessed the performance of an existing process-guided deep learning stream temperature model of the Delaware River Basin (USA) and
   explored four approaches for improving groundwater process representation: 1) a custom loss function that leverages the unique patterns
   of air and water temperature coupling resulting from different temperature drivers, 2) inclusion of additional groundwater-relevant
   catchment attributes, 3) incorporation of additional process model outputs, and 4) a composite model. The associated manuscript examines
   changes in the predictive accuracy, feature importance, and predictive ability in un-seen reaches resulting from each of the four approaches.
-  This model archive includes 4 zipped folders for 1) Data Preparation, 2) Model Code, and 3) Model Predictions, as well as the catchment attributes
+  This model archive includes four zipped folders for 1) Data Preparation, 2) Model Code, 3) Model Predictions, and 4) the catchment attributes
   that were compiled for reaches in the study area. Instructions for running data preparation and modeling code can be found in the README.md files
   in 01_Data_Prep and 02_Model_Code respectively. File dictionaries have also been included and serve as metadata documentation
-  for the files and datasets within the 4 zipped folders. 
+  for the files and datasets within the four zipped folders. 
       
-authors: ["Barclay, Janet R", "Topp, Simon N", "Koenig Snyder, Lauren E", "Sleckman, Margaux J", "Sadler, Jeffrey M", "Appling, Alison P"]
+authors: ["Barclay, J.R.", "Topp, S.N.", "Koenig Snyder, L.E.", "Sleckman, M.J.", "Sadler, J.M.", "Appling, A.P."]
 pubdate: 2023 
 doi: https://doi.org/10.5066/P9KO49OT
 
@@ -25,9 +25,9 @@ build-environment: Multiple computer systems were used to generate these data, i
 
 larger-cites:
   -
-    authors: ["Janet R. Barclay","Lauren E. Koenig Snyder","Simon N. Topp", "Margaux J. Sleckman","Alison P. Appling"]
+    authors: ["Barclay, J.R.", "Topp, S.N.", "Koenig Snyder, L.E.", "Sleckman, M.J.", "Sadler, J.M.", "Appling, A.P."]
     title: >-
-      tbd  # TO BE COMPLETED ONCE MANUSCRIPT IS ACCEPTED
+      Train, inform, borrow, or combine? Approaches to process-guided deep learning for groundwater-influenced stream temperature prediction
     pubdate: 2023
 
 # ----supporting publications----    
@@ -201,7 +201,7 @@ themekeywords: ["machine learning", "deep learning", "hybrid modeling", "water",
 usage-rules: >-
   These data are open access usable via creative commons as long as original data providers are acknowledged
 
-data-publisher: U.S. Geological Survey
+data-publisher: U.S. Geological Survey data release
 indirect-spatial: U.S.A.
 latitude-res: 0.00001
 longitude-res: 0.00001
@@ -326,4 +326,4 @@ liability-statement: >-
   Unless otherwise stated, all data, metadata and related materials are considered to satisfy the quality standards relative to the purpose for which the data were collected.
   Although these data and associated metadata have been reviewed for accuracy and completeness and approved for release by the U.S. Geological Survey (USGS),
   no warranty expressed or implied is made regarding the display or utility of the data on any other system or for general or scientific purposes, nor shall
-  the act of distribution constitute any such warranty.
+  the act of distribution constitute any such warranty. Any use of trade, firm, or product names is for descriptive purposes only and does not imply emdorsement by the U.S. Government.
